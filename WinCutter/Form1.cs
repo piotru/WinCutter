@@ -50,40 +50,42 @@ namespace WinCutter
             List<string> listdata = new List<string>();
             var textdata= TextBoxData.Text;
 
-            //string[] words = textdata.Split(";", 109, StringSplitOptions.None);
-            //string line;
-
-            //foreach (string word in words)
-            //{
-            //   line.Append(word);
-
-
-            //}
+            //Has³o 1688
 
             int index = 0;
             int charint=textdata.Length;
 
-            for (int i = 0; i < textdata.Length; i += 109)
+            if (textdata.Length > 109)
             {
-                charint= textdata.Length-i;
 
-                if (i <= 109)
+                for (int i = 0; i < textdata.Length; i += 109)
                 {
-                    string line = textdata.Substring(index, 109);
-                    listdata.Add(line);
-                }
-                else { 
-                string  line = textdata.Substring(index, charint);
-                    listdata.Add(line);
-                }
+                    charint = textdata.Length - i;
+
+                    if (i <= 109)
+                    {
+                        string line = textdata.Substring(index, 109);
+                        listdata.Add(line);
+                    }
+                    else
+                    {
+                        string line = textdata.Substring(index, charint);
+                        listdata.Add(line);
+                    }
 
 
                     index += 109;
-            }
-          
-            
+                }
 
-            var charcount = "XSR; U0,0; U1417,4370; D1446,4364; D1459,4357; D1470,4348; D1479,4337; D1486,4324; D1492,4295; D1486,4266; D1".Length; //109
+            }
+            else
+             
+            { 
+                listdata.Add(textdata); 
+            }
+
+
+                var charcount = "XSR; U0,0; U1417,4370; D1446,4364; D1459,4357; D1470,4348; D1479,4337; D1486,4324; D1492,4295; D1486,4266; D1".Length; //109
 
 
             
